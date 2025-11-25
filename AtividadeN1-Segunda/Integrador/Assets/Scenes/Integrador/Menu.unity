@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
+  openDoor: {fileID: 0}
 --- !u!1 &959653861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
+  openDoor: {fileID: 0}
 --- !u!114 &1966424516
 MonoBehaviour:
   m_ObjectHideFlags: 0

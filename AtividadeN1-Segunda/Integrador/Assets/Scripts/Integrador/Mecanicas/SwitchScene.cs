@@ -12,7 +12,8 @@ public class SwitchScene : MonoBehaviour
     {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 0);
 
-        Debug.Log(unlockedLevel);
+        if (unlockedLevel >= buttons.Length)
+            unlockedLevel = buttons.Length - 1;
 
         while (unlockedLevel >= 0)
         {

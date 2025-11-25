@@ -474,7 +474,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 414791824}
   m_OnClick:
     m_PersistentCalls:
@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!1 &439996978
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +697,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 496346794}
   m_OnClick:
     m_PersistentCalls:
@@ -726,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!114 &496346794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +971,7 @@ MonoBehaviour:
   - {fileID: 496346792}
   - {fileID: 806941335}
   - {fileID: 1936516441}
+  openDoor: {fileID: 4332502950125728730, guid: 3a32f6a5e40c9cb469130f04eae398a4, type: 3}
 --- !u!1 &806941333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1051,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 806941337}
   m_OnClick:
     m_PersistentCalls:
@@ -1078,6 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!114 &806941337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,7 +1491,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1072672431}
   m_OnClick:
     m_PersistentCalls:
@@ -1555,6 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!1 &1434807681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!114 &1434807685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,6 +1714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!222 &1434807687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2261,7 +2268,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1936516443}
   m_OnClick:
     m_PersistentCalls:
@@ -2291,6 +2298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+  openDoor: {fileID: 0}
 --- !u!114 &1936516443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,6 +2563,10 @@ PrefabInstance:
     - target: {fileID: 7640626709929078531, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
       propertyPath: m_Name
       value: Porta1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752318518218755581, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7752318518218755581, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
