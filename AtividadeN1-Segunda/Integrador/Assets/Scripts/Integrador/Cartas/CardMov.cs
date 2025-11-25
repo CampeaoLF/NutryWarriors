@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public enum SwipeDecision { None, Jogada, Mão }
 

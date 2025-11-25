@@ -1,6 +1,4 @@
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChangeSpritesP : MonoBehaviour
 {
