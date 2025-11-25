@@ -479,7 +479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 414791826}
+      - m_Target: {fileID: 638805427}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 5
@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!1 &439996978
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +701,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496346793}
+      - m_Target: {fileID: 638805427}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 5
@@ -724,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!114 &496346794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +885,7 @@ GameObject:
   - component: {fileID: 638805424}
   - component: {fileID: 638805426}
   - component: {fileID: 638805425}
+  - component: {fileID: 638805427}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -947,6 +950,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638805423}
   m_CullTransparentMesh: 1
+--- !u!114 &638805427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638805423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 853967597}
+  - {fileID: 414791823}
+  - {fileID: 1072672430}
+  - {fileID: 496346792}
+  - {fileID: 806941335}
+  - {fileID: 1936516441}
 --- !u!1 &806941333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1053,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 806941336}
+      - m_Target: {fileID: 638805427}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 5
@@ -1055,6 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!114 &806941337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,6 +1121,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1779252415979699249, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
   m_PrefabInstance: {fileID: 4412962647613495229}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &853967597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7752318518218755581, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
+  m_PrefabInstance: {fileID: 4412962647613495229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906742920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1492,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1072672433}
+      - m_Target: {fileID: 638805427}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 5
@@ -1520,6 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!1 &1434807681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!114 &1434807685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!222 &1434807687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2229,7 +2266,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936516442}
+      - m_Target: {fileID: 638805427}
         m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
         m_MethodName: switchScenes
         m_Mode: 5
@@ -2253,6 +2290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1538759fcfe5e4da419f60d483eadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
 --- !u!114 &1936516443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,7 +2437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd49a29da17484d9ed29c323431f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FaseDataList: []
 --- !u!4 &2009393296
 Transform:
   m_ObjectHideFlags: 0
@@ -2518,6 +2555,14 @@ PrefabInstance:
     - target: {fileID: 7640626709929078531, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
       propertyPath: m_Name
       value: Porta1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752318518218755581, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 638805427}
+    - target: {fileID: 7752318518218755581, guid: c91aa94c87939334180b5bddae7a0677, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchScenes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -182,6 +182,8 @@ public class DeckManager : MonoBehaviour
 
             if (score > 1)
             {
+                UnlockNewLevel();
+
                 int faseAtualIndex = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("faseAtual", faseAtualIndex);
                 PlayerPrefs.Save();
@@ -215,6 +217,16 @@ public class DeckManager : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void UnlockNewLevel()
+    {
+        if ( SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
+        }
     }
 }  
         
