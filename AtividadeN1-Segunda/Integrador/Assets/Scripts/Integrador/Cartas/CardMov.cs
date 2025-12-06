@@ -1,61 +1,80 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-
-public enum SwipeDecision { None, Jogada, Mão }
+public enum SwipeDecision { None, Jogada, MÃ£o }
 
 public class CardMov : MonoBehaviour
 {
-    [Header("Options")]
-    [Tooltip("Mantém o deslocamento entre o ponto tocado e o centro do objeto (evita 'pulo').")]
-    //Pulo =  quando você começa a arrastar o objeto sem considerar a diferença entre a posição do dedo (toque na tela) e o centro do objeto
-    // Testar sem keepOffset para mostrar isso
-
     public bool keepOffset = true;
-
     public Camera cam;
     public int activeFingerId = -1;
-    public float screenZ;               // Profundidade do objeto em coordenadas de tela
-    public Vector3 dragOffset;          // Offset entre dedo e centro do objeto
-    [SerializeField] bool has2D;                  // Tem Collider2D?
-    //[SerializeField] bool has3D;                  // Tem Collider 3D?
+    public float screenZ;
+    public Vector3 dragOffset;
+    [SerializeField] bool has2D;
     public int cardIndex;
 
-    [Header("Duplo click")]
-
-
-    // >>> EVENTO PARA O MANAGER <<<
     public System.Action<CardMov, SwipeDecision> OnSwipeReleased;
     public System.Action OnDragStart;
     public System.Action OnDragEnd;
-    public static object UI { get; internal set; }
 
     void Awake()
     {
         cam = Camera.main;
         has2D = GetComponent<Collider2D>() != null;
-        
-        //has3D = GetComponent<Collider>() != null;
     }
 
     void OnEnable()
     {
-        // Salva a profundidade atual do objeto para converter Screen->World corretamente
         screenZ = cam.WorldToScreenPoint(transform.position).z;
     }
 
     void Update()
     {
+        
+        if (!Application.isMobilePlatform)
+        {
+            // InÃ­cio
+            if (Input.GetMouseButtonDown(0) && activeFingerId == -1 && MouseHitsThis())
+            {
+                activeFingerId = 0;
+
+                Vector3 worldAtMouse = ScreenToWorld(Input.mousePosition);
+                dragOffset = keepOffset ? (transform.position - worldAtMouse) : Vector3.zero;
+
+                OnDragStart?.Invoke();
+            }
+
+            // Arraste
+            if (Input.GetMouseButton(0) && activeFingerId == 0)
+            {
+                Vector3 worldAtMouse = ScreenToWorld(Input.mousePosition);
+                transform.position = worldAtMouse + dragOffset;
+            }
+
+            // Fim
+            if (Input.GetMouseButtonUp(0) && activeFingerId == 0)
+            {
+                SwipeDecision decision =
+                      transform.position.y > 0f ? SwipeDecision.Jogada
+                    : transform.position.y < 0f ? SwipeDecision.MÃ£o
+                    : SwipeDecision.None;
+
+                OnSwipeReleased?.Invoke(this, decision);
+                OnDragEnd?.Invoke();
+
+                activeFingerId = -1;
+            }
+
+            return;
+        }
+
+        
         if (Input.touchCount == 0) return;
 
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch toutch = Input.GetTouch(i);
 
-            /*if (EventSystem.current && EventSystem.current.IsPointerOverGameObject(toutch.fingerId))
-                continue; // toque está em UI; não arrastar*/
-
-            // INÍCIO DO ARRASTE: só inicia se o toque começou sobre ESTE objeto
-            if (toutch.phase == UnityEngine.TouchPhase.Began && activeFingerId == -1 && TouchHitsThis(toutch.position))
+            if (toutch.phase == TouchPhase.Began && activeFingerId == -1 && TouchHitsThis(toutch.position))
             {
                 activeFingerId = toutch.fingerId;
 
@@ -65,60 +84,52 @@ public class CardMov : MonoBehaviour
                 OnDragStart?.Invoke();
             }
 
-            // ARRASTE
-            if (toutch.fingerId == activeFingerId && (toutch.phase == UnityEngine.TouchPhase.Moved || toutch.phase == UnityEngine.TouchPhase.Stationary))
+            if (toutch.fingerId == activeFingerId &&
+                (toutch.phase == TouchPhase.Moved || toutch.phase == TouchPhase.Stationary))
             {
                 Vector3 worldAtFinger = ScreenToWorld(toutch.position);
                 transform.position = worldAtFinger + dragOffset;
             }
 
-            // FIM DO ARRASTE: objeto permanece onde o dedo parou
-            if (toutch.fingerId == activeFingerId && (toutch.phase == UnityEngine.TouchPhase.Ended || toutch.phase == UnityEngine.TouchPhase.Canceled))
+            if (toutch.fingerId == activeFingerId &&
+                (toutch.phase == TouchPhase.Ended || toutch.phase == TouchPhase.Canceled))
             {
-
-                /*Emite o evento da onde foi solto*/
-
                 SwipeDecision decision =
                       transform.position.y > 0f ? SwipeDecision.Jogada
-                    : transform.position.y < 0f ? SwipeDecision.Mão
+                    : transform.position.y < 0f ? SwipeDecision.MÃ£o
                     : SwipeDecision.None;
 
-                OnSwipeReleased?.Invoke(this, decision); // avisa o Manager
-
+                OnSwipeReleased?.Invoke(this, decision);
                 OnDragEnd?.Invoke();
 
                 activeFingerId = -1;
             }
-
         }
-        
     }
 
     Vector3 ScreenToWorld(Vector2 screenPos)
     {
-        // Converte considerando a profundidade do objeto (serve para 2D e 3D)
         var screenPosition = new Vector3(screenPos.x, screenPos.y, screenZ);
         return cam.ScreenToWorldPoint(screenPosition);
     }
 
     bool TouchHitsThis(Vector2 screenPos)
     {
-        // Teste para 2D
         if (has2D)
         {
             Vector3 world = ScreenToWorld(screenPos);
             return Physics2D.OverlapPoint(world) == GetComponent<Collider2D>();
         }
-
-        // Teste para 3D
-        //if (has3D)
-        //{
-        //    Ray ray = cam.ScreenPointToRay(screenPos);
-        //    return Physics.Raycast(ray, out RaycastHit hit) && hit.collider == GetComponent<Collider>();
-        //}
-
-        // Se não tiver collider, aceita sempre (começa a arrastar em qualquer lugar)
         return true;
     }
-   
+
+    bool MouseHitsThis()
+    {
+        if (has2D)
+        {
+            Vector3 world = ScreenToWorld(Input.mousePosition);
+            return Physics2D.OverlapPoint(world) == GetComponent<Collider2D>();
+        }
+        return true;
+    }
 }

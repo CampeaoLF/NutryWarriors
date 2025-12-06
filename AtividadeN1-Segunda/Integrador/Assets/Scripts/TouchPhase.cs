@@ -11,6 +11,10 @@ public class TouchPhase : MonoBehaviour
     public string message;
 
     public static UnityEngine.TouchPhase Ended { get; internal set; }
+    public static UnityEngine.TouchPhase Began { get; internal set; }
+    public static UnityEngine.TouchPhase Stationary { get; internal set; }
+    public static UnityEngine.TouchPhase Moved { get; internal set; }
+    public static UnityEngine.TouchPhase Canceled { get; internal set; }
 
     void Update()
     {
